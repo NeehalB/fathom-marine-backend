@@ -14,14 +14,13 @@ const connectionString: string =
 app.use(express.json());
 app.use(cors());
 
-app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}`);
-});
-
 mongoose
   .connect(connectionString)
   .then(() => {
     console.log("Connected to Database.");
+    app.listen(PORT, () => {
+      console.log(`Listening at port ${PORT}`);
+    });
   })
   .catch((error) => {
     console.log(error);
